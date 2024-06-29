@@ -19,7 +19,7 @@ app.use(express.urlencoded({
 }))
 
 app.use(express.static("public"))
-app.use(express.cookieParser())
+app.use(cookieParser())
 
 
 export { app }
