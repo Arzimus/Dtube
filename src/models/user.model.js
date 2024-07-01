@@ -1,10 +1,10 @@
 import mongoose, { Schema } from "mongoose";
-import jwt from 'jwt'
+import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 
 const UserSchema = mongoose.Schema({
   username: {
-    type: Strting,
+    type: String,
     required: true,
     unique: true,
     lowercase: true,
@@ -12,20 +12,20 @@ const UserSchema = mongoose.Schema({
     index: true,
   },
   email: {
-    type: Strting,
+    type: String,
     required: true,
     unique: true,
     lowercase: true,
     trim: true,
   },
   fullName: {
-    type: Strting,
+    type: String,
     required: true,
     trim: true,
     index: true,
   },
   avatar: {
-    type: Strting,
+    type: String,
     required: true,
   },
   coverImage: {
