@@ -18,7 +18,7 @@ const UserSchema = mongoose.Schema({
     lowercase: true,
     trim: true,
   },
-  fullname: {
+  fullName: {
     type: Strting,
     required: true,
     trim: true,
@@ -49,7 +49,7 @@ const UserSchema = mongoose.Schema({
 // cant use arrow fuction as they do not have the access to this keyword
 UserSchema.pre('save', async function (next) {
   if (!this.isModified("password")) next()
-  this.password = bcrypt.hash(this.password, 10)
+  this.password = await bcrypt.hash(this.password, 10)
 })
 
 // creating our own methods 
@@ -62,7 +62,7 @@ UserSchema.methods.generateAccessToken = function () {
     _id: this._id,
     email: this.email,
     username: this.username,
-    fullname: this.fullname
+    fullName: this.fullName
   }, process.env.JWT_SECRET, { expiresIN: process.env.JWT_SECRET_EXPIRY })
 }
 
