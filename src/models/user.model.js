@@ -41,7 +41,7 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: [true, "Password is required"]
   },
-  refreshTokens: {
+  refreshToken: {
     type: String
   }
 }, { timestamps: true });
@@ -63,13 +63,13 @@ UserSchema.methods.generateAccessToken = function () {
     email: this.email,
     username: this.username,
     fullName: this.fullName
-  }, process.env.JWT_SECRET, { expiresIN: process.env.JWT_SECRET_EXPIRY })
+  }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_SECRET_EXPIRY })
 }
 
 UserSchema.methods.generateRefreshToken = function () {
   return jwt.sign({
     _id: this._id,
-  }, process.env.REFRESH_TOKEN, { expiresIN: process.env.REFRESH_TOKEN_EXPIRY })
+  }, process.env.REFRESH_TOKEN, { expiresIn: process.env.REFRESH_TOKEN_EXPIRY })
 }
 
 export const User = mongoose.model("User", UserSchema)
