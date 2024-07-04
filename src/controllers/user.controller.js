@@ -458,5 +458,6 @@ export {
   getCurrentUser,
   updateAccountDetails,
   updateUserAvatar,
-  getUserChannelProfile
+  getUserChannelProfile,
+  getWatchHistory
 }
